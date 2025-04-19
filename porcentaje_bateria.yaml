@@ -1,0 +1,8 @@
+#In HA, a Tuya Smart vacuum robot (named Pixel) didn't want to show battery percentage unless I accessed the identity first (multiple steps), so I added this to access it directly from anywhere in HA.
+
+- name: "Porcentaje batería Pixel"
+        unique_id: porcentaje_bateria_pixel
+        unit_of_measurement: "%"
+        state: "{{ state_attr('vacuum.pixel', 'battery_level') | int }}"
+
+        #Add a 'Needle' indicator card in a dashboard using this entity, and it will look great.
