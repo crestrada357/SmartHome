@@ -1,0 +1,28 @@
+#HA needs to know what icon to show depending on today's weather when you want to show weather info in a badge
+#You can add this to your sensors (replace with your own weather sensor in 'state')
+#The states are in Spanish, but it's the same idea for any language
+
+- name: "Clima Hoy con Ícono"
+        unique_id: clima_hoy_icono
+        state: "{{ states('sensor.clima_hoy') }}"
+        icon: >
+          {% set estado = states('sensor.clima_hoy') | lower %}
+          {% if 'despejado' in estado %}
+            mdi:weather-sunny
+          {% elif 'parcialmente nublado' in estado %}
+            mdi:weather-partly-cloudy
+          {% elif 'nublado' in estado %}
+            mdi:weather-cloudy
+          {% elif 'lluvia ligera' in estado %}
+            mdi:weather-rainy
+          {% elif 'lluvia moderada' in estado %}
+            mdi:weather-pouring
+          {% elif 'lluvia de gran intensidad' in estado %}
+            mdi:weather-lightning-rainy
+          {% elif 'tormenta' in estado %}
+            mdi:weather-lightning
+          {% elif 'niebla' in estado %}
+            mdi:weather-fog
+          {% else %}
+            mdi:weather-partly-cloudy
+          {% endif %}
