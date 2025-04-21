@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Your SmartHome Portfolio</title>
+  <!-- Basic CSS Styles for Layout -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Your SmartHome Automation Portfolio</h1>
+    <p>Showcasing automation projects powered by Home Assistant</p>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="card">
+        <h2>📚 Project Overview</h2>
+        <p>This portfolio demonstrates my automation work with Home Assistant, using real-world, bilingual YAML configurations. Each automation aims to improve functionality and usability, while ensuring a smooth experience for both English and Spanish speakers.</p>
+      </div>
+
+      <div class="card">
+        <h2>⚙️ Key Features</h2>
+        <ul>
+          <li>Automatic night light routines</li>
+          <li>Failover recovery and reboot triggers</li>
+          <li>Workarounds for Spanish-speaking users (fixing language-related issues in HA)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🛠️ Tools & Technologies</h2>
+        <p>This project uses a combination of technologies to create a robust and efficient home automation system:</p>
+        <ul>
+          <li>Home Assistant</li>
+          <li>YAML for automations and scripts</li>
+          <li>Tuya Smart devices (sensors, switches)</li>
+          <li>ChatGPT for configuration assistance</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🖥️ Example Automation: Battery Percentage for Tuya Smart Vacuum</h2>
+        <p>Here's an automation to access the battery percentage of a Tuya Smart Vacuum (Pixel) directly from anywhere in Home Assistant:</p>
+        <pre>
+- name: "Porcentaje batería Pixel"
+  unique_id: porcentaje_bateria_pixel
+  unit_of_measurement: "%"
+  state: "{{ state_attr('vacuum.pixel', 'battery_level') | int }}"
+        </pre>
+        <div class="project-links">
+          <a href="https://github.com/crestrada357/SmartHome" target="_blank">View Full Repo</a>
+          <a href="#contact">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Created with ❤️ by <a href="https://github.com/crestrada357" target="_blank">crestrada357</a></p>
+  </footer>
+
+</body>
+
+</html>
