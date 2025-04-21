@@ -1,8 +1,12 @@
-#HA needs to know what icon to show depending on today's weather when you want to show weather info in a badge
-#You can add this to your sensors (replace with your own weather sensor in 'state')
-#The states are in Spanish, but it's the same idea for any language
+# Template sensor to assign an appropriate weather icon based on today's forecast (Spanish-based weather states).
+# Useful for displaying weather as a badge in Home Assistant Dashboards with visual clarity.
 
-- name: "Clima Hoy con Ícono"
+# Sensor de plantilla para asignar un ícono de clima apropiado según el pronóstico de hoy (estados del clima en español).
+# Útil para mostrar el clima como un "badge" en los Dashboards de Home Assistant de forma visual y clara.
+
+template:
+  - sensor:
+      - name: "Today's Weather with Icon / Clima Hoy con Ícono"
         unique_id: clima_hoy_icono
         state: "{{ states('sensor.clima_hoy') }}"
         icon: >
@@ -26,3 +30,7 @@
           {% else %}
             mdi:weather-partly-cloudy
           {% endif %}
+
+        # Replace 'sensor.clima_hoy' with your own weather entity.
+        # Reemplaza 'sensor.clima_hoy' con tu propio sensor de clima.
+
