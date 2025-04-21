@@ -1,8 +1,17 @@
-#In HA, a Tuya Smart vacuum robot (named Pixel) didn't want to show battery percentage unless I accessed the identity first (multiple steps), so I added this to access it directly from anywhere in HA.
+# Template sensor to expose the battery percentage of a Tuya Smart vacuum robot (named "Pixel").
+# The vacuum doesn't expose its battery level unless accessed manually. This workaround makes it globally available.
 
-- name: "Porcentaje batería Pixel"
+# Sensor de plantilla para mostrar el porcentaje de batería de un robot aspiradora Tuya (llamado "Pixel").
+# El robot no muestra el porcentaje directamente a menos que se acceda manualmente a la identidad.
+# Esta solución lo hace visible en cualquier parte de Home Assistant.
+
+template:
+  - sensor:
+      - name: "Pixel Battery Percentage / Porcentaje batería Pixel"
         unique_id: porcentaje_bateria_pixel
         unit_of_measurement: "%"
-        state: "{{ state_attr('vacuum.pixel', 'battery_level') | int }}"
+        state: >
+          {{ state_attr('vacuum.pixel', 'battery_level') | int }}
 
-        #Add a 'Needle' indicator card in a dashboard using this entity, and it will look great.
+        # You can add this to a Dashboard using a Gauge (Needle) card for a sleek battery level display.
+        # Puedes usar una tarjeta tipo Gauge (Aguja) en un Dashboard para mostrar visualmente el nivel de batería.
