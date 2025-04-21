@@ -1,10 +1,26 @@
-# SmartHome
-Smart home stuff, automations, especially Home Assistant related.
+# SmartHome Automation Project
 
-Introduction: My Smart Home setup, and how I made it work exactly the way I wanted with Home Assistant, even though I use other platforms to perform basic actions.
+This repository contains my personal Home Assistant configuration files used to automate various aspects of my smart home setup. It includes custom YAML automations, scripts, and integrations tailored for a Wi-Fi-based ecosystem using mostly Tuya Smart devices.
 
-Technologies Used: Home Assistant, YAML, HACS, TuyaSmart/SmartLife, Ring, TP-Link Deco/Tapo, Fully Kiosk Browser.
+## 🌟 Features
+- Automatic night light routines
+- Failover recovery and reboot triggers
+- Workarounds for Spanish speaking users. Have you noticed how simply changing the language in HA seems to break automations?
 
-Features: Vacuum robots custom configs, Wall panel Badges, custom day of the week, time, weather forecast, temp & humidity sensors. Spanish language fixes.
+## 🔧 Tools & Technologies
+- Home Assistant (running on Intel i7 / 16GB RAM setup)
+- YAML for automations and scripts
+- Tuya Smart devices (sensors, switches)
+- ChatGPT-assisted config validation
 
-Setup Instructions: Install HAOS on a recycled old PC, add HACS and Studio Code Server (helps with the indentation in YAML).
+## 🧠 Lessons Learned
+- Debugging inconsistent device connectivity with Tuya
+- Creating fallback automations to add some 'resilience'
+- YAML optimization for better readability and reuse
+
+## 📌 Notes
+Most configurations were tested in a real home setup in Ecuador with unstable Internet conditions, requiring robust offline fallbacks.
+
+## 📎 Related Resources
+- [Home Assistant Docs](https://www.home-assistant.io/)
+- [Tuya Integration](https://www.home-assistant.io/integrations/tuya/)
