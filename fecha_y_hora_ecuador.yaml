@@ -1,11 +1,34 @@
-# Since HA refuses to show this in Spanish and easily concatenate some values to show in a badge, I had to manually translate each day and month, and then use the time sensor to achieve this look: Viernes, 18 de Abril de 2025: 8:49PM
+# Template sensor to display the current date and time in Spanish (for Ecuador) using a fully localized format.
+# Home Assistant doesn't support full Spanish localization for date/time formatting out of the box.
+# This sensor manually translates day and month names using Jinja2 dictionaries and `now()`.
+# I prefer not to simply change the language of HA to Spanish because it tends to break automations.
+
+# Sensor de plantilla para mostrar la fecha y hora actual en español (para Ecuador) en un formato completamente localizado.
+# Home Assistant no admite localización completa de fecha/hora en español por defecto.
+# Este sensor traduce manualmente los días y meses utilizando diccionarios Jinja2 y `now()`.
+# Prefiero no cambiar simplemente el idioma a Español en HA porque tiende a romper/dañar automatizaciones.
+
 template:
   - sensor:
-  # If you already have a sensor section, skip to this part (watch the indentation).
-    - name: "Fecha y Hora Ecuador"
-      unique_id: fecha_y_hora_ecuador
-      state: >
-        {% set dias = {'Monday': 'Lunes', 'Tuesday': 'Martes', 'Wednesday': 'Miércoles', 'Thursday': 'Jueves', 'Friday': 'Viernes', 'Saturday': 'Sábado', 'Sunday': 'Domingo'} %}
-        {% set meses = {'January': 'Enero', 'February': 'Febrero', 'March': 'Marzo', 'April': 'Abril', 'May': 'Mayo', 'June': 'Junio', 'July': 'Julio', 'August': 'Agosto', 'September': 'Septiembre', 'October': 'Octubre', 'November': 'Noviembre', 'December': 'Diciembre'} %}
-        {% set now = now().astimezone() %}
-        {{ dias[now.strftime('%A')] }}, {{ now.strftime('%d') }} de {{ meses[now.strftime('%B')] }} de {{ now.strftime('%Y') }}: {{ now.strftime('%-I:%M%p') }}
+      # If you already have a "template:" block, just add this under the "sensor:" section (careful with the indentation).
+      # Si ya tienes un bloque "template:", solo agrega esto dentro de "sensor:" (ten cuidado con la indentación).
+      - name: "Date & Time Ecuador / Fecha y Hora Ecuador"
+        unique_id: fecha_y_hora_ecuador
+        state: >
+          {% set dias = {
+            'Monday': 'Lunes', 'Tuesday': 'Martes', 'Wednesday': 'Miércoles',
+            'Thursday': 'Jueves', 'Friday': 'Viernes', 'Saturday': 'Sábado', 'Sunday': 'Domingo'
+          } %}
+          {% set meses = {
+            'January': 'Enero', 'February': 'Febrero', 'March': 'Marzo',
+            'April': 'Abril', 'May': 'Mayo', 'June': 'Junio',
+            'July': 'Julio', 'August': 'Agosto', 'September': 'Septiembre',
+            'October': 'Octubre', 'November': 'Noviembre', 'December': 'Diciembre'
+          } %}
+          {% set now = now().astimezone() %}
+          {{ dias[now.strftime('%A')] }}, {{ now.strftime('%d') }} de {{ meses[now.strftime('%B')] }} de {{ now.strftime('%Y') }}: {{ now.strftime('%-I:%M%p') }}
+
+        # Example output: Viernes, 18 de Abril de 2025: 8:49PM
+        # You can use this in a Badge or Markdown card to show date/time in Spanish in a very clear and compact way.
+        # Ejemplo de output: Viernes, 18 de Abril de 2025: 8:49PM
+        # Puedes usarlo en un Badge o tarjeta Markdown para mostrar fecha/hora en español de manera muy clara y compacta.
